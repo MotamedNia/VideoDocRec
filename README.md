@@ -1,3 +1,14 @@
 # SmartDoc
 
-## Itroduction
+### Introduction
+
+### Requirements
+
+### Installation
+
+## Running the tests
+
+## Authors
+
+## License
+
