@@ -18,7 +18,7 @@ Video dataset and reported the results.
 * [Json](https://github.com/nlohmann/json) : To parse data.json file
     * Put json.hpp to the project root directory.
 
-#### Optianal requirements
+#### Optional requirements
 * [FISH  Fast Wavelet-Based Algorithm for Global and Local Image Sharpness Estimation](https://sites.google.com/site/vapovu/papers) 
 : For quality assessing related functions.
     * Download matlab code and create c++ library. The you can follow this [gist.github](https://gist.github.com/minooei/1ec439dd91857d35d7b2d963056f2a45)
