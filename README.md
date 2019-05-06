@@ -17,11 +17,9 @@ Video dataset and reported the results.
 * [OpenCV](https://opencv.org/) : To perform Computer vision functions.
 * [Json](https://github.com/nlohmann/json) : To parse data.json file
     * Put json.hpp to the project root directory.
-
-#### Optional requirements
 * [FISH  Fast Wavelet-Based Algorithm for Global and Local Image Sharpness Estimation](https://sites.google.com/site/vapovu/papers) 
 : For quality assessing related functions.
-    * Download matlab code and create c++ library. The you can follow this [gist.github](https://gist.github.com/minooei/1ec439dd91857d35d7b2d963056f2a45)
+    * Download matlab code and create c++ library.put fish.so and fish.h in Libs directory. Then you can follow this [gist.github](https://gist.github.com/minooei/1ec439dd91857d35d7b2d963056f2a45)
     to enable the project to use this library.     
 ### Building
 Simply create build directory and run these commands:
