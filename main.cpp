@@ -254,7 +254,7 @@ int main(int argc, char** argv) {
 
     //TODO put all program in try and exception and in all situations matlab should be terminated
 
-    finalImage = blendImage(finalImage, dewarpedRefFrame,256,128);
+    // finalImage = blendImage(finalImage, dewarpedRefFrame,256,128);
 
     imwrite(outputPath,finalImage);
 
