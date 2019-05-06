@@ -7,7 +7,7 @@
 //#include "Assesors/VOL.cpp"
 #include "Assesors/rank_bluro.h"
 #include "Welder/Composer.h"
-#include "blend/blend.h"
+//#include "blend/blend.h"
 
 using json = nlohmann::json;
 
@@ -181,7 +181,7 @@ int main(int argc, char** argv) {
     scoredImages = Mat::zeros(targetDimen,CV_64FC3);
 
     // Initialize composer
-    Composer composer(256,dewarpedRefFrame,scoredImages,scores, quality, isGpu);
+    Composer_old composer(256,dewarpedRefFrame,scoredImages,scores, quality, isGpu);
 
     for (int i =0; capture.isOpened(); i++){
 
@@ -209,15 +209,15 @@ int main(int argc, char** argv) {
                                 ,dewarpMask); //TODO it seems that clear warp is not working
 
 
-                        std::ostringstream out1;
-                        out1 << "../output/" << i <<"_orig.png";
-                        string outputFilePath = out1.str();
-                        imwrite(outputFilePath,inProcImage);
-
-                        std::ostringstream out2;
-                        out2 << "../output/" << i <<".jpg";
-                        string outputFilePath2 = out2.str();
-                        imwrite(outputFilePath2,dewarpedImage);
+//                        std::ostringstream out1;
+//                        out1 << "../output/" << i <<"_orig.png";
+//                        string outputFilePath = out1.str();
+//                        imwrite(outputFilePath,inProcImage);
+//
+//                        std::ostringstream out2;
+//                        out2 << "../output/" << i <<".jpg";
+//                        string outputFilePath2 = out2.str();
+//                        imwrite(outputFilePath2,dewarpedImage);
                     }
 
                 }
@@ -254,7 +254,7 @@ int main(int argc, char** argv) {
 
     //TODO put all program in try and exception and in all situations matlab should be terminated
 
-    // finalImage = blendImage(finalImage, dewarpedRefFrame,256,128);
+//     finalImage = blendImage(finalImage, dewarpedRefFrame,256,128);
 
     imwrite(outputPath,finalImage);
 
@@ -262,46 +262,46 @@ int main(int argc, char** argv) {
     return 0;
 }
 
-Mat blendImage(Mat finalImage,Mat refImage,int windowSize,int step) {
-    Mat blendedImage = refImage.clone();
-
-    for (int i = 0; i < finalImage.cols; i += step) {
-        for (int j = 0; j < finalImage.rows; j += step) {
-            Rect roi,mask_rect;
-            int OWidth = finalImage.cols - i;
-            int OHeight = finalImage.rows - j;
-
-            if (i + windowSize > finalImage.cols && j + windowSize > finalImage.rows)
-                roi = Rect(i, j, OWidth, OHeight);
-            else if (i + windowSize > finalImage.cols)
-                roi = Rect(i, j, OWidth, windowSize);
-            else if (j + windowSize > finalImage.rows)
-                roi = Rect(i, j, windowSize, OHeight);
-            else
-                roi = Rect(i, j, windowSize, windowSize);
-
-
-            Mat mask(finalImage.size(), CV_8UC1, Scalar::all(0));
-            Mat froi(finalImage.size(), CV_8UC3, Scalar::all(0));
-
-            mask_rect=Rect(roi.x+4,roi.y+4,roi.width-8,roi.height-8);
-            if (mask_rect.width <= 0 || mask_rect.height <= 0 )
-                continue;
-
-            mask(mask_rect).setTo(cv::Scalar(255));
-
-
-            Mat win = finalImage(roi);
-
-            Mat mroi =froi(roi);
-            Mat myroi=win.clone();
-            myroi.copyTo(mroi);
-
-
-            blend::seamlessBlend(froi,blendedImage,mask,blendedImage);
-        }
-
-    }
-
-    return blendedImage;
-}
+//Mat blendImage(Mat finalImage,Mat refImage,int windowSize,int step) {
+//    Mat blendedImage = refImage.clone();
+//
+//    for (int i = 0; i < finalImage.cols; i += step) {
+//        for (int j = 0; j < finalImage.rows; j += step) {
+//            Rect roi,mask_rect;
+//            int OWidth = finalImage.cols - i;
+//            int OHeight = finalImage.rows - j;
+//
+//            if (i + windowSize > finalImage.cols && j + windowSize > finalImage.rows)
+//                roi = Rect(i, j, OWidth, OHeight);
+//            else if (i + windowSize > finalImage.cols)
+//                roi = Rect(i, j, OWidth, windowSize);
+//            else if (j + windowSize > finalImage.rows)
+//                roi = Rect(i, j, windowSize, OHeight);
+//            else
+//                roi = Rect(i, j, windowSize, windowSize);
+//
+//
+//            Mat mask(finalImage.size(), CV_8UC1, Scalar::all(0));
+//            Mat froi(finalImage.size(), CV_8UC3, Scalar::all(0));
+//
+//            mask_rect=Rect(roi.x+4,roi.y+4,roi.width-8,roi.height-8);
+//            if (mask_rect.width <= 0 || mask_rect.height <= 0 )
+//                continue;
+//
+//            mask(mask_rect).setTo(cv::Scalar(255));
+//
+//
+//            Mat win = finalImage(roi);
+//
+//            Mat mroi =froi(roi);
+//            Mat myroi=win.clone();
+//            myroi.copyTo(mroi);
+//
+//
+//            blend::seamlessBlend(froi,blendedImage,mask,blendedImage);
+//        }
+//
+//    }
+//
+//    return blendedImage;
+//}

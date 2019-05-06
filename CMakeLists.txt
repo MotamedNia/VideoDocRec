@@ -31,23 +31,23 @@ set_property(TARGET fish PROPERTY IMPORTED_LOCATION ../Libs/fish.so)
 ##
 
 ## Blend
-set(EIGEN_INCLUDE_DIR "../eigen" CACHE PATH "Where is the include directory of Eigen located")
-set(BLEND_TESTS_VERBOSE 0 CACHE BOOL "Tests will show visualizations when enabled")
+#set(EIGEN_INCLUDE_DIR "../eigen" CACHE PATH "Where is the include directory of Eigen located")
+#set(BLEND_TESTS_VERBOSE 0 CACHE BOOL "Tests will show visualizations when enabled")
+#
+#include_directories(${CMAKE_CURRENT_BINARY_DIR} ${OpenCV_INCLUDE_DIRS} ${EIGEN_INCLUDE_DIR} "inc")
+#
+## Library
+#
+#add_library(blend
+#        inc/blend/poisson_solver.h
+#        inc/blend/clone.h
+#        inc/blend/blend.h
+#        src/poisson_solver.cpp
+#        src/clone.cpp
+#        src/blend.cpp
+#        )
 
-include_directories(${CMAKE_CURRENT_BINARY_DIR} ${OpenCV_INCLUDE_DIRS} ${EIGEN_INCLUDE_DIR} "inc")
-
-# Library
-
-add_library(blend
-        inc/blend/poisson_solver.h
-        inc/blend/clone.h
-        inc/blend/blend.h
-        src/poisson_solver.cpp
-        src/clone.cpp
-        src/blend.cpp
-        )
-
-target_link_libraries(6_1_RD_AlgoAgg blend ${OpenCV_LIBS} )
+#target_link_libraries(6_1_RD_AlgoAgg blend ${OpenCV_LIBS} )
 ##
 
 #include_directories(Libs)

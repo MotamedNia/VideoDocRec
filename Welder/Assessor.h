@@ -17,7 +17,7 @@ enum class QUALITY_METHODS {VOL, RankBluro, fishSharpness};
 class Assessor{
 public:
     Assessor(char* QUALITY_METHOD){
-        this->QUALITY_METHOD = QUALITY_METHOD;
+        this->QUALITY_METHOD = String(QUALITY_METHOD);
     }
 
     double qualityAssess(Mat image,int sample) {
@@ -30,7 +30,7 @@ public:
         }
 
 private:
-    char *QUALITY_METHOD;
+    String QUALITY_METHOD;
 
     // Find image quality by variance of laplacian method
     double VOL_method(Mat image){
@@ -66,7 +66,7 @@ private:
     // Find image quality by fish sharpness method
     double fishSharpness(Mat &image,int sample){
         std::ostringstream streamOutput;
-        streamOutput << "../output/patches/" << sample<<"_patch.png"; //TODO it is incorrect
+        streamOutput << sample<<"_patch.png"; //TODO it is incorrect
         string imgPath = streamOutput.str();
 
         imwrite(imgPath,image);

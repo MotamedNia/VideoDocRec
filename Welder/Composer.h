@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class Composer{
+class Composer_old{
 private:
     Mat scoredImages;
     Mat scores;
@@ -19,7 +19,7 @@ private:
     Assessor assessor;
 
 public:
-    Composer(int windowSize,Mat dewarpedRefFrame, Mat scoredImages, Mat scores,char *quality, bool isGPU):assessor(quality){
+    Composer_old(int windowSize,Mat dewarpedRefFrame, Mat scoredImages, Mat scores,char *quality, bool isGPU):assessor(quality){
         this->scoredImages = scoredImages;
         this->scores = scores;
         this->dewarpedRefFrame = dewarpedRefFrame;
