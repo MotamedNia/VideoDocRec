@@ -15,6 +15,7 @@ Video dataset and reported the results.
 
 * [CMake](https://cmake.org/) : To generate  build files
 * [OpenCV](https://opencv.org/) : To perform Computer vision functions.
+   * CUDA support required for GPU acceleration
 * [Json](https://github.com/nlohmann/json) : To parse data.json file
     * Put json.hpp to the project root directory.
 * [FISH  Fast Wavelet-Based Algorithm for Global and Local Image Sharpness Estimation](https://sites.google.com/site/vapovu/papers) 
